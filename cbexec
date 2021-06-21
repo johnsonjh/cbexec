@@ -1,0 +1,110 @@
+#!/usr/bin/env sh
+# shellcheck disable=SC2086
+
+RUN="command"
+TRU="true"
+LNG="c++"
+ARX="-invalid"
+TST="test"
+SED="sed"
+EXT="${1##*.}"
+IFP="${IFS:-}"
+GTO="/dev/null"
+CAT="cat"
+RMF="rm"
+CCC="gcc"
+CXX="g++"
+DMD="dmd"
+XGO="go"
+FOR="gfortran"
+FRE="-ffree-form"
+FIX="-ffixed-form"
+IFS='
+ '
+
+if [ "${#*}" -lt 1 ]; then
+	printf '%s\n' "Error: Specify parameter"
+	exit 1
+fi
+
+OUT="$(mktemp -p "${TMPDIR:-/tmp/}" XXXXXXXX.exe)" ||
+	{
+		printf '%s\n' \
+			"Error: mktemp failed"
+		exit 1
+	}
+
+run_compiler()
+{
+	if [ "${EXT:-}" = "c" ]; then
+		LNG="c" &&
+			ARX="-o ${OUT:?} -x ${LNG:?} -"
+		${RUN:?} "${CCC:?}" ${ARX:?}
+		${TST:?} -x "${OUT:?}" &&
+			${RUN:?} "${OUT:?}"
+	elif [ "${EXT:-}" = "c++" ] ||
+		[ "${EXT:-}" = "cpp" ]; then
+		LNG="c++" &&
+			ARX="-o ${OUT:?} -x ${LNG:?} -"
+		${RUN:?} "${CXX:?}" ${ARX:?}
+		${TST:?} -x "${OUT:?}" &&
+			${RUN:?} "${OUT:?}"
+	elif [ "${EXT:-}" = "f" ] ||
+		[ "${EXT:-}" = "for" ] ||
+		[ "${EXT:-}" = "f95" ] ||
+		[ "${EXT:-}" = "fort" ]; then
+		LNG="f95" &&
+			ARX="-o ${OUT:?} -x ${LNG:?} -"
+		${RUN:?} "${FOR:?}" "${FRE:-}" ${ARX:?}
+		${TST:?} -x "${OUT:?}" &&
+			${RUN:?} "${OUT:?}"
+	elif [ "${EXT:-}" = "f77" ]; then
+		LNG="f77" &&
+			ARX="-o ${OUT:?} -x ${LNG:?} -"
+		${RUN:?} "${FOR:?}" "${FRE:-}" ${ARX:?}
+		${TST:?} -x "${OUT:?}" &&
+			${RUN:?} "${OUT:?}"
+	elif [ "${EXT:-}" = "d" ]; then
+		${RUN:?} "${DMD:?}" -of="${OUT:?}" -
+		${TST:?} -x "${OUT:?}" &&
+			${RUN:?} "${OUT:?}"
+	elif [ "${EXT:-}" = "go" ]; then
+		GTO="$(mktemp -p "${TMPDIR:-/tmp/}" XXXXXXX.go)" ||
+			{
+				printf '%s\n' \
+					"Error: mktemp failed"
+				exit 1
+			} &&
+			ARX="-o ${OUT:?} ${GTO:?}"
+		${RUN:?} "${CAT:?}" "-" \
+			> "${GTO:?}"
+		${RUN:?} "${XGO:?}" "build" ${ARX:?}
+		"${RMF:?}" "-f" "--" "${GTO:?}" \
+			> "/dev/null" 2>&1 ||
+			"${TRU:?}"
+		${TST:?} -x "${OUT:?}" &&
+			${RUN:?} "${OUT:?}"
+	else
+		printf '%s\n' \
+			"Error: Unknown extension ${EXT:-}"
+		exit "1"
+	fi
+}
+
+do_sed()
+{
+	${RUN:?} "${SED:?}" "${@:?}"
+}
+
+# shellcheck disable=SC2016
+"do_sed" "-n" '2,$p' "${@:?}" |
+	"run_compiler"
+XL="${?:?}"
+
+"${RMF:?}" "-f" "--" "${OUT:?}" \
+	> "/dev/null" 2>&1 ||
+	"${TRU:?}"
+
+IFS="${IFP:-}"
+
+exit "${XL:-0}"
