@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 # shellcheck disable=SC2086
+# vim: filetype=sh:tabstop=4:tw=76
 
 ###########################################################################
 # Start
@@ -42,7 +43,7 @@ if [ ! -f "${1:-}" ]; then
 	printf '%s\n' \
 		"Error: input not found." \
 			>&2
-	exit 1
+	exit "1"
 fi
 
 ###########################################################################
@@ -53,7 +54,7 @@ OUT="$(mktemp -p "${TMPDIR:-/tmp/}" XXXXXXXX.exe)" ||
 		printf '%s\n' \
 			"Error: mktemp failed." \
 				>&2
-		exit 1
+		exit "1"
 	}
 
 ###########################################################################
@@ -151,7 +152,7 @@ run_compiler()
 				printf '%s\n' \
 					"Error: mktemp failed." \
 						>&2
-				exit 1
+				exit "1"
 			} &&
 			ARX="-o ${OUT:?} ${GTO:?}"
 		${RUN:?} \
@@ -177,7 +178,7 @@ run_compiler()
 				printf '%s\n' \
 					"Error: mktemp failed." \
 						>&2
-				exit 1
+				exit "1"
 			} &&
 			${RUN:?} \
 				"${CAT:?}" "-" \
@@ -244,12 +245,12 @@ run_compiler()
 				printf '%s\n' \
 					"Error: mktemp failed." \
 						>&2
-				exit 1
+				exit "1"
 			} &&
 			ARX="-Q --batch -l ${ETO:?}"
 		${RUN:?} \
 			"${CAT:?}" "-" \
-			> "${ETO:?}"
+				> "${ETO:?}"
 		${RUN:?} \
 			"${EML:?}" ${ARX:?}
 		"${RMF:?}" "-f" "${ETO:?}" \
@@ -267,7 +268,7 @@ run_compiler()
 				printf '%s\n' \
 					"Error: mktemp failed." \
 						>&2
-				exit 1
+				exit "1"
 			} &&
 		${RUN:?} \
 			"${CAT:?}" "-" \
@@ -303,8 +304,9 @@ do_sed()
 # Run script
 
 # shellcheck disable=SC2016
-"do_sed" "-n" '2,$p' "${@:?}" |
-	"run_compiler"
+"do_sed" "-n" '2,$p' \
+	"${@:?}" |
+		"run_compiler"
 EXL="${?:?}"
 
 ###########################################################################
@@ -324,5 +326,16 @@ IFS="${IFP:-}"
 # End
 
 exit "${EXL:-0}"
+
+###########################################################################
+# Emacs configuration
+
+# Local Variables:
+# mode: sh
+# sh-shell: sh
+# sh-indentation: 4
+# sh-basic-offset: 4
+# tab-width: 4
+# End:
 
 ###########################################################################
