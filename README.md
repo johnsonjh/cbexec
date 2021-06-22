@@ -1,7 +1,8 @@
 # cbexec
 ---
+*A gross hack…*
 ## Examples
----
+
 ### Bash
 ```bash
 #!/usr/bin/env cbexec
