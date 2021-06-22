@@ -19,7 +19,7 @@ builtin printf '%s\n' \
 
 ### C
 
-```sh
+```d
 #!/usr/bin/env cbexec
 
 #include <stdio.h>
@@ -49,7 +49,7 @@ int main() {
 
 ### C++
 
-```sh
+```d
 #!/usr/bin/env cbexec
 
 #include <iostream>
