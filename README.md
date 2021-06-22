@@ -110,3 +110,12 @@ HELLO FORTRAN-77 WORLD!
 HELLO COBOL WORLD!
 ```
 ---
+````ocaml
+#!/usr/bin/env cbexec
+
+print_string "Hello OCaml World!\n"
+````
+```bash
+ » ./hello.ml
+Hello OCaml World!
+```
