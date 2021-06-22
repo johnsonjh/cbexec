@@ -1,101 +1,28 @@
 # cbexec
+
 ## Examples
+
+### Bash
+```
+#!/usr/bin/env cbexec
+
+builtin printf '%s\n' "Hello Bash World!"
+```
+
 ### C
-```c
+```
 #!/usr/bin/env cbexec
 
 #include <stdio.h>
 
-void main() {
+int main() {
     printf("Hello C World!\n");
+	return 0;
 }
 ```
-```bash
- » ./hello.c
-Hello C World!
-```
----
-### C++
-```c++
-#!/usr/bin/env cbexec
 
-#include <iostream>
-
-int main() {
-    std::cout << "Hello C++ World!";
-    return 0;
-}
-```
-```bash
- » ./hello.cpp
-Hello C++ World!
-```
----
-### D
-```d
-#!/usr/bin/env cbexec
-
-import std.stdio;
-
-int main() {
-    writeln("Hello D World!");
-    return 0;
-}
-```
-```bash
- » ./hello.d
-Hello D World!
-```
----
-### Go
-```go
-#!/usr/bin/env cbexec
-
-package main
-
-import "fmt"
-
-func main() {
-    fmt.Print("Hello Go World!\n")
-}
-```
-```bash
- » ./hello.go
-Hello Go World!
-```
----
-### FORTRAN-90
-```fortran
-#!/usr/bin/env cbexec
-
-program main
-implicit none
-write (*, '(a)') 'Hello FORTRAN World!'
-stop
-end
-```
-```bash
- » ./hello.f
-Hello FORTRAN-90 World!
-```
----
-### FORTRAN-77
-```fortran
-#!/usr/bin/env /home/jhj/src/official/personal/cbexec/cbexec
-
-      PROGRAM HELLOW
-      WRITE(UNIT=*,FMT='(A)')'HELLO FORTRAN-77 WORLD!'
-      STOP
-      END
-
-```
-```bash
- » ./hello.f77
-HELLO FORTRAN-77 WORLD!
-```
----
 ### COBOL
-```cobol
+```
 #!/usr/bin/env cbexec
 
        IDENTIFICATION DIVISION.
@@ -105,17 +32,120 @@ HELLO FORTRAN-77 WORLD!
            DISPLAY 'HELLO COBOL WORLD!' END-DISPLAY.
            STOP RUN.
 ```
-```bash
- » ./hello.cob
-HELLO COBOL WORLD!
+
+### C++
 ```
----
-````ocaml
+#!/usr/bin/env cbexec
+
+#include <iostream>
+
+int main()
+{
+   std::cout << "Hello C++ World!" << std::endl;
+   return 0;
+}
+```
+
+### C Shell
+```
+#!/usr/bin/env cbexec
+
+set fignore = (.o \~) && set hw='Hello Csh World!' && printf '%s\n' "$hw";
+```
+
+### D
+```
+#!/usr/bin/env cbexec
+
+import std.stdio;
+
+int main() {
+    writeln("Hello D World!");
+	return 0;
+}
+```
+
+### Emacs Lisp
+```
+#!/usr/bin/env cbexec
+
+(message "Hello Emacs Lisp World!")
+```
+
+### FORTRAN-90
+```
+#!/usr/bin/env cbexec
+
+program main
+implicit none
+write (*, '(a)') 'Hello FORTRAN-90 World!'
+stop
+end
+```
+
+### FORTRAN-77
+```
+#!/usr/bin/env cbexec
+
+      PROGRAM HELLOW
+      WRITE(UNIT=*,FMT='(A)')'HELLO FORTRAN-77 WORLD!'
+      STOP
+      END
+```
+
+### Go
+```
+#!/usr/bin/env cbexec
+
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello Go World!")
+}
+```
+
+# Korn Shell
+```
+#!/usr/bin/env cbexec
+
+PATH=""
+print "Hello Korn Shell World!"
+```
+
+### MATLAB / Octave
+```
+#!/usr/bin/env cbexec
+
+printf("Hello MATLAB World!\n");
+quit(0);
+```
+
+### OCaml
+```
 #!/usr/bin/env cbexec
 
 print_string "Hello OCaml World!\n"
-````
-```bash
- » ./hello.ml
-Hello OCaml World!
+```
+
+### POSIX Shell
+```
+#!/usr/bin/env cbexec
+
+(
+	exec 2> /dev/null
+	time 1> /dev/null 2>&1 < /dev/null
+) || {
+	XX="Hello POSIX World!" :
+	printf '%s\n' "$XX"
+} | grep POSIX
+```
+
+### Z Shell
+```
+#!/usr/bin/env cbexec
+
+PATH=""
+- builtin print "Hello Zsh World!"
 ```
