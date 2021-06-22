@@ -84,10 +84,29 @@ Hello FORTRAN-90 World!
 #!/usr/bin/env /home/jhj/src/official/personal/cbexec/cbexec
 
       PROGRAM HELLOW
-      WRITE(UNIT=*, FMT=*) 'Hello FORTRAN-77 World'
+      WRITE(UNIT=*,FMT='(A)')'HELLO FORTRAN-77 WORLD!'
+      STOP
       END
+
 ```
 ```bash
  » ./hello.f77
-Hello FORTRAN-77 World!
+HELLO FORTRAN-77 WORLD!
 ```
+---
+### COBOL
+```cobol
+#!/usr/bin/env cbexec
+
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. COBOL.
+       PROCEDURE DIVISION.
+       MAIN.
+           DISPLAY 'HELLO COBOL WORLD!' END-DISPLAY.
+           STOP RUN.
+```
+```bash
+ » ./hello.cob
+HELLO COBOL WORLD!
+```
+---
