@@ -50,7 +50,7 @@ int main()
 ```
 #!/usr/bin/env cbexec
 
-set fignore = (.o \~) && set hw='Hello Csh World!' && printf '%s\n' "$hw";
+set fignore = (.o \~) && set hw='Hello C Shell World!' && printf '%s\n' "$hw";
 ```
 
 ### D
@@ -137,7 +137,7 @@ print_string "Hello OCaml World!\n"
 	exec 2> /dev/null
 	time 1> /dev/null 2>&1 < /dev/null
 ) || {
-	XX="Hello POSIX World!" :
+	XX="Hello POSIX Shell World!" :
 	printf '%s\n' "$XX"
 } | grep POSIX
 ```
@@ -147,5 +147,5 @@ print_string "Hello OCaml World!\n"
 #!/usr/bin/env cbexec
 
 PATH=""
-- builtin print "Hello Zsh World!"
+- builtin print "Hello Z Shell World!"
 ```
