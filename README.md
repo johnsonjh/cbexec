@@ -3,14 +3,14 @@
 ## Examples
 
 ### Bash
-```
+```bash
 #!/usr/bin/env cbexec
 
 builtin printf '%s\n' "Hello Bash World!"
 ```
 
 ### C
-```
+```c
 #!/usr/bin/env cbexec
 
 #include <stdio.h>
@@ -22,7 +22,7 @@ int main() {
 ```
 
 ### COBOL
-```
+```cobol
 #!/usr/bin/env cbexec
 
        IDENTIFICATION DIVISION.
@@ -34,7 +34,7 @@ int main() {
 ```
 
 ### C++
-```
+```c++
 #!/usr/bin/env cbexec
 
 #include <iostream>
@@ -47,14 +47,14 @@ int main()
 ```
 
 ### C Shell
-```
+```csh
 #!/usr/bin/env cbexec
 
 set fignore = (.o \~) && set hw='Hello C Shell World!' && printf '%s\n' "$hw";
 ```
 
 ### D
-```
+```d
 #!/usr/bin/env cbexec
 
 import std.stdio;
@@ -66,14 +66,14 @@ int main() {
 ```
 
 ### Emacs Lisp
-```
+```elisp
 #!/usr/bin/env cbexec
 
 (message "Hello Emacs Lisp World!")
 ```
 
 ### FORTRAN-90
-```
+```fortran
 #!/usr/bin/env cbexec
 
 program main
@@ -84,7 +84,7 @@ end
 ```
 
 ### FORTRAN-77
-```
+```fortran
 #!/usr/bin/env cbexec
 
       PROGRAM HELLOW
@@ -94,7 +94,7 @@ end
 ```
 
 ### Go
-```
+```go
 #!/usr/bin/env cbexec
 
 package main
@@ -107,7 +107,7 @@ func main() {
 ```
 
 # Korn Shell
-```
+```ksh
 #!/usr/bin/env cbexec
 
 PATH=""
@@ -115,7 +115,7 @@ print "Hello Korn Shell World!"
 ```
 
 ### MATLAB / Octave
-```
+```matlab
 #!/usr/bin/env cbexec
 
 printf("Hello MATLAB World!\n");
@@ -123,14 +123,14 @@ quit(0);
 ```
 
 ### OCaml
-```
+```ocaml
 #!/usr/bin/env cbexec
 
-print_string "Hello OCaml World!\n"
+print_sring "Hello OCaml World!\n"
 ```
 
 ### POSIX Shell
-```
+```sh
 #!/usr/bin/env cbexec
 
 (
@@ -143,7 +143,7 @@ print_string "Hello OCaml World!\n"
 ```
 
 ### Z Shell
-```
+```zsh
 #!/usr/bin/env cbexec
 
 PATH=""
