@@ -7,14 +7,19 @@
 ## Examples
 
 ### Bash
+
 ```bash
 #!/usr/bin/env cbexec
 
-builtin printf '%s\n' "Hello Bash World!"
+builtin printf '%s\n' \
+    "Hello Bash World!"
 ```
+
 ---
+
 ### C
-```c
+
+```sh
 #!/usr/bin/env cbexec
 
 #include <stdio.h>
@@ -24,9 +29,12 @@ int main() {
 	return 0;
 }
 ```
+
 ---
+
 ### COBOL
-```cobol
+
+```sh
 #!/usr/bin/env cbexec
 
        IDENTIFICATION DIVISION.
@@ -36,9 +44,12 @@ int main() {
            DISPLAY 'HELLO COBOL WORLD!' END-DISPLAY.
            STOP RUN.
 ```
+
 ---
+
 ### C++
-```c++
+
+```sh
 #!/usr/bin/env cbexec
 
 #include <iostream>
@@ -49,15 +60,21 @@ int main()
    return 0;
 }
 ```
+
 ---
+
 ### C Shell
+
 ```csh
 #!/usr/bin/env cbexec
 
 set fignore = (.o \~) && set hw='Hello C Shell World!' && printf '%s\n' "$hw";
 ```
+
 ---
+
 ### D
+
 ```d
 #!/usr/bin/env cbexec
 
@@ -68,16 +85,22 @@ int main() {
 	return 0;
 }
 ```
+
 ---
+
 ### Emacs Lisp
+
 ```elisp
 #!/usr/bin/env cbexec
 
 (message "Hello Emacs Lisp World!")
 ```
+
 ---
+
 ### FORTRAN-90
-```fortran
+
+```sh
 #!/usr/bin/env cbexec
 
 program main
@@ -86,9 +109,12 @@ write (*, '(a)') 'Hello FORTRAN-90 World!'
 stop
 end
 ```
+
 ---
+
 ### FORTRAN-77
-```fortran
+
+```sh
 #!/usr/bin/env cbexec
 
       PROGRAM HELLOW
@@ -96,9 +122,12 @@ end
       STOP
       END
 ```
+
 ---
+
 ### Go
-```go
+
+```sh
 #!/usr/bin/env cbexec
 
 package main
@@ -109,31 +138,43 @@ func main() {
 	fmt.Println("Hello Go World!")
 }
 ```
+
 ---
+
 ### Korn Shell
+
 ```ksh
 #!/usr/bin/env cbexec
 
 PATH=""
 print "Hello Korn Shell World!"
 ```
+
 ---
+
 ### MATLAB / Octave
-```matlab
+
+```sh
 #!/usr/bin/env cbexec
 
 printf("Hello MATLAB World!\n");
 quit(0);
 ```
+
 ---
+
 ### OCaml
-```ocaml
+
+```sh
 #!/usr/bin/env cbexec
 
 print_sring "Hello OCaml World!\n"
 ```
+
 ---
+
 ### POSIX Shell
+
 ```sh
 #!/usr/bin/env cbexec
 
@@ -145,12 +186,16 @@ print_sring "Hello OCaml World!\n"
 	printf '%s\n' "$XX"
 } | grep POSIX
 ```
+
 ---
+
 ### Z Shell
+
 ```zsh
 #!/usr/bin/env cbexec
 
 PATH=""
 - builtin print "Hello Z Shell World!"
 ```
+
 ---
