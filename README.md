@@ -1,6 +1,6 @@
 # cbexec
 
-A universal shebang wrapper (*and gross hack*),
+A universal shebang wrapper (_and gross hack_),
 switching interpreters based on file extension.
 
 ---
