@@ -174,7 +174,7 @@ print_sring "Hello OCaml World!\n"
 
 ---
 
-### POSIX Shell
+### '"POSIX"' Shell
 
 ```sh
 #!/usr/bin/env cbexec
